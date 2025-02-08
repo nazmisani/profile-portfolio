@@ -41,7 +41,7 @@ const Hero = () => {
             >
               <motion.div className="flex items-center gap-4">
                 <motion.a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/nazmisani"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, rotate: 5 }}
@@ -50,7 +50,7 @@ const Hero = () => {
                   <Github className="w-6 h-6 text-gray-700 dark:text-gray-300" />
                 </motion.a>
                 <motion.a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://www.linkedin.com/in/nouvalnazmi2362/"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, rotate: -5 }}
@@ -59,7 +59,7 @@ const Hero = () => {
                   <Linkedin className="w-6 h-6 text-gray-700 dark:text-gray-300" />
                 </motion.a>
                 <motion.a
-                  href="mailto:your@email.com"
+                  href="mailto:nazminouval@gmail.com"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   className="p-3 bg-gray-100 dark:bg-gray-800 rounded-full hover:shadow-lg transition-all duration-300"
                 >

@@ -10,7 +10,7 @@ const Footer = () => {
           </div>
           <div className="flex space-x-4">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/nazmisani"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
@@ -18,7 +18,7 @@ const Footer = () => {
               <Github className="w-6 h-6" />
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/nouvalnazmi2362/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
@@ -26,7 +26,7 @@ const Footer = () => {
               <Linkedin className="w-6 h-6" />
             </a>
             <a
-              href="mailto:nouval@example.com"
+              href="mailto:nazminouval@gmail.com"
               className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white"
             >
               <Mail className="w-6 h-6" />
