@@ -59,10 +59,61 @@ const Hero = () => {
       <div className="container mx-auto px-4 z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="lg:w-1/2 relative order-first lg:order-last"
+          >
+            <motion.div
+              className="relative w-72 h-72 lg:w-96 lg:h-96 mx-auto"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-3xl opacity-30 dark:opacity-40"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 180, 0],
+                }}
+                transition={{
+                  duration: 20,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur-3xl opacity-30 dark:opacity-40"
+                animate={{
+                  scale: [1.2, 1, 1.2],
+                  rotate: [180, 0, 180],
+                }}
+                transition={{
+                  duration: 15,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+              <motion.div
+                whileHover={{ scale: 1.05, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+                className="relative z-10"
+              >
+                <Image
+                  src="/profile.jpeg"
+                  alt="Nouval Nazmi Sani"
+                  width={384}
+                  height={384}
+                  className="rounded-full shadow-2xl border-4 border-white dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-300"
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="lg:w-1/2 space-y-8"
+            className="lg:w-1/2 space-y-8 order-last lg:order-first"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -165,57 +216,6 @@ const Hero = () => {
                     className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
                   />
                 </motion.a>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:w-1/2 relative"
-          >
-            <motion.div
-              className="relative w-72 h-72 lg:w-96 lg:h-96 mx-auto"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-3xl opacity-30 dark:opacity-40"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 180, 0],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full blur-3xl opacity-30 dark:opacity-40"
-                animate={{
-                  scale: [1.2, 1, 1.2],
-                  rotate: [180, 0, 180],
-                }}
-                transition={{
-                  duration: 15,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-              <motion.div
-                whileHover={{ scale: 1.05, rotate: 5 }}
-                transition={{ duration: 0.3 }}
-                className="relative z-10"
-              >
-                <Image
-                  src="/profile.jpeg"
-                  alt="Nouval Nazmi Sani"
-                  width={384}
-                  height={384}
-                  className="rounded-full shadow-2xl border-4 border-white dark:border-gray-800 hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-300"
-                />
               </motion.div>
             </motion.div>
           </motion.div>
