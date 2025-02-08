@@ -9,14 +9,12 @@ import WhatsAppButton from "@/components/whatsapp-button"
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="relative">
-        <Hero />
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Skills />
-          <Projects />
-          <Education />
-          <Certifications />
-        </div>
+      <Hero />
+      <div className="relative divide-y divide-gray-100 dark:divide-gray-800 mx-auto max-w-[2000px]">
+        <Skills />
+        <Projects />
+        <Education />
+        <Certifications />
       </div>
       <WhatsAppButton />
     </main>
