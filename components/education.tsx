@@ -45,20 +45,28 @@ const Education = () => {
   }
 
   return (
-    <section id="education" className="py-12 sm:py-16 lg:py-24 bg-gray-50 dark:bg-gray-900/50">
+    <section id="education" className="py-20 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900/20">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8 sm:mb-12"
+          className="text-center mb-16"
         >
-          <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-2 sm:mb-3 text-blue-600" />
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 200, damping: 10, delay: 0.2 }}
+            className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 p-3 shadow-lg"
+          >
+            <GraduationCap className="w-full h-full text-white" />
+          </motion.div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
             Education Journey
           </h2>
-          <p className="mt-2 sm:mt-3 text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
             My academic and professional learning path that has shaped my skills and knowledge
           </p>
         </motion.div>
@@ -68,36 +76,62 @@ const Education = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto space-y-4 sm:space-y-6"
+          className="max-w-4xl mx-auto relative"
         >
+          {/* Timeline line */}
+          <div className="absolute left-4 sm:left-1/2 transform sm:-translate-x-px h-full w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-transparent" />
+
           {educationData.map((item, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group relative"
+              className="relative flex items-center justify-between sm:justify-normal group mb-8 last:mb-0"
             >
-              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-6 p-4 sm:p-6 rounded-xl bg-white dark:bg-gray-800/50 shadow-md hover:shadow-lg transition-all duration-300">
-                <div className="flex-shrink-0">
-                  <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                    <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400" />
+              {/* Timeline dot */}
+              <motion.div 
+                className="absolute left-4 sm:left-1/2 w-4 h-4 rounded-full bg-white dark:bg-gray-800 border-4 border-blue-500 transform -translate-x-2 sm:-translate-x-2"
+                whileHover={{ scale: 1.5 }}
+                transition={{ type: "spring", stiffness: 300, damping: 10 }}
+              />
+
+              {/* Content */}
+              <div className={`relative flex-1 ${index % 2 === 0 ? 'sm:mr-auto sm:pr-8' : 'sm:ml-auto sm:pl-8'} ${index % 2 === 0 ? 'ml-12 sm:ml-0' : 'ml-12 sm:ml-0'}`}>
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="p-6 bg-white dark:bg-gray-800/90 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 p-2.5 shadow-md group-hover:scale-110 transition-transform duration-300">
+                        <item.icon className="w-full h-full text-white" />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {item.type}
+                      </h3>
+                      <p className="text-sm font-medium text-gray-600 dark:text-gray-300">
+                        {item.name}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex-grow w-full">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-1 sm:mb-2">
-                    <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
-                      {item.type}
-                    </h3>
-                    <span className="inline-block px-2.5 py-0.5 text-xs sm:text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                      {item.year}
-                    </span>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <span className="px-3 py-1 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-sm">
+                        {item.year}
+                      </span>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      {item.description}
+                    </p>
                   </div>
-                  <p className="text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-300 mb-1">
-                    {item.name}
-                  </p>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                    {item.description}
-                  </p>
-                </div>
+
+                  {/* Decorative elements */}
+                  <div className="absolute top-0 right-0 -mt-2 -mr-2">
+                    <div className="w-4 h-4 bg-blue-500/10 rounded-full animate-ping" />
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}

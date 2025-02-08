@@ -103,150 +103,129 @@ const Projects = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3
+        staggerChildren: 0.2
       }
     }
   }
 
-  const projectVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const cardVariants = {
+    hidden: { y: 50, opacity: 0 },
     visible: {
-      opacity: 1,
       y: 0,
+      opacity: 1,
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 20
+        damping: 12
       }
-    }
-  }
-
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case "Full Stack":
-        return <Server className="w-5 h-5" />
-      case "Web App":
-        return <Laptop className="w-5 h-5" />
-      case "Backend":
-        return <Database className="w-5 h-5" />
-      default:
-        return <Laptop className="w-5 h-5" />
     }
   }
 
   return (
-    <section id="projects" className="py-20 bg-white dark:bg-gray-800">
+    <section id="projects" className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
             Featured Projects
           </h2>
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
-            Here are some of my recent projects that showcase my skills and experience
+            Explore my latest works showcasing innovative solutions and creative designs
           </p>
         </motion.div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projectsData.map((project, index) => (
             <motion.div
               key={project.title}
-              variants={projectVariants}
-              className="bg-gray-50 dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col h-full"
+              variants={cardVariants}
+              whileHover={{ y: -10 }}
+              className="group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
             >
-              <div className="relative h-64 overflow-hidden group">
+              <div className="relative h-48 overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
-                  width={600}
-                  height={400}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  layout="fill"
+                  objectFit="cover"
+                  className="group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="p-1.5 bg-blue-600/20 backdrop-blur-sm rounded-lg">
-                      {getCategoryIcon(project.category)}
-                    </div>
-                    <span className="text-sm font-medium">{project.category}</span>
-                  </div>
-                </div>
               </div>
 
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-2xl font-bold mb-3 text-gray-800 dark:text-white">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <span className="px-3 py-1 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full">
+                    {project.category}
+                  </span>
+                </div>
+
+                <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
                   {project.description}
                 </p>
 
-                <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-gray-800 dark:text-white mb-2">
-                    Key Features
-                  </h4>
-                  <ul className="space-y-2">
-                    {project.features.map((feature, i) => (
-                      <motion.li
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        className="flex items-center gap-2 text-gray-600 dark:text-gray-300"
-                      >
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-300">
+                    <Laptop className="w-4 h-4" />
+                    <span>Key Features:</span>
+                  </div>
+                  <ul className="space-y-1 ml-6 text-sm text-gray-600 dark:text-gray-300">
+                    {project.features.map((feature, idx) => (
+                      <li key={idx} className="list-disc">
                         {feature}
-                      </motion.li>
+                      </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech, i) => (
-                    <motion.span
-                      key={i}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: i * 0.1 }}
-                      className="px-3 py-1 text-sm bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full"
-                    >
-                      {tech}
-                    </motion.span>
-                  ))}
-                </div>
-
-                <div className="flex gap-4 mt-auto">
+                <div className="flex justify-between mt-6">
                   <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors duration-200"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
                   >
                     <Github className="w-5 h-5" />
-                    View Code
+                    <span>Code</span>
                   </motion.a>
-                  {project.title !== "Guessionary" && (
+                  {project.live && (
                     <motion.a
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors"
                     >
                       <ExternalLink className="w-5 h-5" />
-                      Live Demo
+                      <span>Live Demo</span>
                     </motion.a>
                   )}
                 </div>
