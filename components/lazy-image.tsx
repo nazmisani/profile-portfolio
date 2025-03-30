@@ -59,12 +59,7 @@ export default function LazyImage({
       }}
     >
       {isVisible && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isLoaded ? 1 : 0 }}
-          transition={{ duration: 0.5 }}
-          className="w-full h-full"
-        >
+        <div className="w-full h-full">
           <Image
             src={src}
             alt={alt || ""}
@@ -73,17 +68,14 @@ export default function LazyImage({
             onLoadingComplete={() => setIsLoaded(true)}
             className={className}
             placeholder={blurEffect ? "blur" : "empty"}
-            blurDataURL={
-              blurEffect
-                ? "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIiAvPjwvc3ZnPg=="
-                : undefined
-            }
+            blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIiAvPjwvc3ZnPg=="
+            priority={true}
             {...props}
           />
-        </motion.div>
+        </div>
       )}
       {(!isVisible || !isLoaded) && blurEffect && (
-        <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-md" />
+        <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 rounded-md" />
       )}
     </div>
   );

@@ -26,21 +26,21 @@ export default function ScrollReveal({
   const ref = useRef(null);
   const isInView = useInView(ref, { once, amount: threshold });
 
-  // Set initial animation states based on direction
+  // Simplified initial animation states based on direction
   const getInitialState = () => {
     switch (direction) {
       case "up":
-        return { opacity: 0, y: 50 };
+        return { opacity: 0, y: 20 };
       case "down":
-        return { opacity: 0, y: -50 };
+        return { opacity: 0, y: -20 };
       case "left":
-        return { opacity: 0, x: 50 };
+        return { opacity: 0, x: 20 };
       case "right":
-        return { opacity: 0, x: -50 };
+        return { opacity: 0, x: -20 };
       case "none":
         return { opacity: 0 };
       default:
-        return { opacity: 0, y: 50 };
+        return { opacity: 0, y: 20 };
     }
   };
 

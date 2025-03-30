@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
 import { ThemeToggle } from "./theme-toggle";
 
 const navItems: any[] = [
@@ -16,7 +15,6 @@ const navItems: any[] = [
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("Home");
 
   useEffect(() => {
@@ -57,8 +55,6 @@ const Navbar = () => {
         top: offsetPosition,
         behavior: "smooth",
       });
-
-      setIsOpen(false);
     }
   };
 
@@ -75,32 +71,7 @@ const Navbar = () => {
     },
   };
 
-  const menuVariants = {
-    closed: {
-      scale: 0,
-      opacity: 0,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 30,
-      },
-    },
-    open: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 30,
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const menuItemVariants = {
-    closed: { x: -20, opacity: 0 },
-    open: { x: 0, opacity: 1 },
-  };
+  // No menu variants needed
 
   return (
     <>
@@ -126,55 +97,15 @@ const Navbar = () => {
               MyPortfolio
             </motion.a>
 
-            {/* Desktop Menu with Dark Mode Toggle */}
-            <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+            {/* Theme Toggle for all screen sizes */}
+            <div className="flex items-center space-x-1 lg:space-x-2">
               <ThemeToggle />
             </div>
-
-            {/* Mobile Menu Button */}
-            <motion.button
-              className="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800"
-              onClick={() => setIsOpen(!isOpen)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {isOpen ? (
-                <X className="w-5 h-5 sm:w-6 sm:h-6" />
-              ) : (
-                <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
-              )}
-            </motion.button>
           </div>
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={menuVariants}
-            className="fixed inset-0 z-40 md:hidden"
-          >
-            <div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm"
-              onClick={() => setIsOpen(false)}
-            />
-            <motion.div
-              className="fixed top-[4.5rem] sm:top-20 right-4 w-56 sm:w-64 p-4 bg-white dark:bg-gray-900 rounded-2xl shadow-xl"
-              variants={menuVariants}
-            >
-              <div className="flex flex-col space-y-1">
-                <div className="px-3 py-2">
-                  <ThemeToggle />
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* No mobile menu needed */}
     </>
   );
 };

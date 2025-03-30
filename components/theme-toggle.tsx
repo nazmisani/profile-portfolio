@@ -18,7 +18,7 @@ export function ThemeToggle() {
 
   return (
     <motion.div
-      className="flex items-center gap-2 ml-2 p-1 rounded-full bg-gray-100 dark:bg-gray-800"
+      className="flex items-center gap-1 sm:gap-2 p-1 rounded-full bg-gray-100 dark:bg-gray-800"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -32,7 +32,7 @@ export function ThemeToggle() {
         whileTap={{ scale: 0.9 }}
         transition={{ duration: 0.2 }}
       >
-        <Sun size={16} />
+        <Sun size={16} className="w-4 h-4 sm:w-5 sm:h-5" />
       </motion.button>
 
       <motion.button
@@ -45,7 +45,7 @@ export function ThemeToggle() {
         whileTap={{ scale: 0.9 }}
         transition={{ duration: 0.2 }}
       >
-        <Moon size={16} />
+        <Moon size={16} className="w-4 h-4 sm:w-5 sm:h-5" />
       </motion.button>
     </motion.div>
   );
