@@ -4,13 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-const navItems = [
-  { name: "Home", href: "home" },
-  { name: "Skills", href: "skills" },
-  { name: "Projects", href: "projects" },
-  { name: "Experience", href: "experience" },
-  { name: "Education", href: "education" },
-];
+const navItems: any[] = [];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -124,25 +118,9 @@ const Navbar = () => {
               MyPortfolio
             </motion.a>
 
-            {/* Desktop Menu */}
+            {/* Desktop Menu - Removed */}
             <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
-              {navItems.map((item) => (
-                <motion.a
-                  key={item.name}
-                  href="#"
-                  onClick={(e) => handleNavClick(e, item.href)}
-                  className={`relative px-3 sm:px-4 py-2 rounded-full text-sm sm:text-base font-medium transition-all duration-300 cursor-pointer
-                    ${
-                      activeSection === item.href
-                        ? "text-white bg-blue-600 dark:bg-blue-500"
-                        : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                    }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item.name}
-                </motion.a>
-              ))}
+              {/* Navigation items removed as requested */}
             </div>
 
             {/* Mobile Menu Button */}
@@ -181,22 +159,7 @@ const Navbar = () => {
               variants={menuVariants}
             >
               <div className="flex flex-col space-y-1">
-                {navItems.map((item) => (
-                  <motion.a
-                    key={item.name}
-                    href="#"
-                    variants={menuItemVariants}
-                    className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-300 cursor-pointer
-                      ${
-                        activeSection === item.href
-                          ? "text-white bg-blue-600 dark:bg-blue-500"
-                          : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-                      }`}
-                    onClick={(e) => handleNavClick(e, item.href)}
-                  >
-                    {item.name}
-                  </motion.a>
-                ))}
+                {/* Mobile navigation items removed as requested */}
               </div>
             </motion.div>
           </motion.div>
