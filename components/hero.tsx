@@ -154,9 +154,9 @@ const Hero = () => {
                   onClick={() => {
                     const projectsSection = document.getElementById("projects");
                     if (projectsSection) {
-                      projectsSection.scrollIntoView({ 
+                      projectsSection.scrollIntoView({
                         behavior: "smooth",
-                        block: "start" 
+                        block: "start",
                       });
                     }
                   }}
@@ -172,7 +172,7 @@ const Hero = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 border-2 border-gray-300 dark:border-gray-700 rounded-full font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 flex items-center gap-2"
+                  className="px-6 py-3 border-2 border-gray-500 dark:border-gray-700 rounded-full font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 flex items-center gap-2"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -201,9 +201,7 @@ const Hero = () => {
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   className="p-3 bg-white dark:bg-gray-800 rounded-full hover:shadow-lg transition-all duration-300 group"
                 >
-                  <Github
-                    className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
-                  />
+                  <Github className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
                 </motion.a>
                 <motion.a
                   href="https://www.linkedin.com/in/nouvalnazmi2362/"
@@ -212,18 +210,14 @@ const Hero = () => {
                   whileHover={{ scale: 1.1, rotate: -5 }}
                   className="p-3 bg-white dark:bg-gray-800 rounded-full hover:shadow-lg transition-all duration-300 group"
                 >
-                  <Linkedin
-                    className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
-                  />
+                  <Linkedin className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
                 </motion.a>
                 <motion.a
                   href="mailto:nazminouval@gmail.com"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   className="p-3 bg-white dark:bg-gray-800 rounded-full hover:shadow-lg transition-all duration-300 group"
                 >
-                  <Mail
-                    className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors"
-                  />
+                  <Mail className="w-6 h-6 text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
                 </motion.a>
               </motion.div>
             </motion.div>

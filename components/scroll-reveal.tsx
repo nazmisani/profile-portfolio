@@ -24,7 +24,7 @@ export default function ScrollReveal({
 }: ScrollRevealProps) {
   const controls = useAnimation();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once, threshold });
+  const isInView = useInView(ref, { once, amount: threshold });
 
   // Set initial animation states based on direction
   const getInitialState = () => {

@@ -128,22 +128,6 @@ const Navbar = () => {
 
             {/* Desktop Menu with Dark Mode Toggle */}
             <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
-              {navItems.map((item) => (
-                <motion.a
-                  key={item.href}
-                  href={`#${item.href}`}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    activeSection === item.href
-                      ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
-                      : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800/50"
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item.name}
-                </motion.a>
-              ))}
               <ThemeToggle />
             </div>
 
@@ -183,22 +167,7 @@ const Navbar = () => {
               variants={menuVariants}
             >
               <div className="flex flex-col space-y-1">
-                {navItems.map((item) => (
-                  <motion.a
-                    key={item.href}
-                    href={`#${item.href}`}
-                    onClick={(e) => handleNavClick(e, item.href)}
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                      activeSection === item.href
-                        ? "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400"
-                        : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800/50"
-                    }`}
-                    variants={menuItemVariants}
-                  >
-                    {item.name}
-                  </motion.a>
-                ))}
-                <div className="mt-2 px-3 py-2">
+                <div className="px-3 py-2">
                   <ThemeToggle />
                 </div>
               </div>
