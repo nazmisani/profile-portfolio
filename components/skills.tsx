@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Icon } from "@iconify/react"
-import { motion } from "framer-motion"
+import { Icon } from "@iconify/react";
+import { motion } from "framer-motion";
 
 const skillCategories = [
   {
@@ -12,6 +12,7 @@ const skillCategories = [
       { name: "TypeScript", icon: "logos:typescript-icon" },
       { name: "Node.js", icon: "logos:nodejs-icon" },
       { name: "SQL", icon: "vscode-icons:file-type-sql" },
+      { name: "Golang", icon: "logos:go" },
     ],
   },
   {
@@ -21,6 +22,7 @@ const skillCategories = [
       { name: "React", icon: "logos:react" },
       { name: "Next.js", icon: "devicon:nextjs" },
       { name: "Express.js", icon: "devicon:express" },
+      { name: "Gin Gonic", icon: "simple-icons:go" },
     ],
   },
   {
@@ -38,6 +40,7 @@ const skillCategories = [
     skills: [
       { name: "Prisma", icon: "simple-icons:prisma" },
       { name: "Sequelize", icon: "logos:sequelize" },
+      { name: "GORM", icon: "simple-icons:go" },
     ],
   },
   {
@@ -70,7 +73,7 @@ const skillCategories = [
       { name: "GCP", icon: "logos:google-cloud" },
     ],
   },
-]
+];
 
 const Skills = () => {
   const containerVariants = {
@@ -78,10 +81,10 @@ const Skills = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
-  }
+        staggerChildren: 0.2,
+      },
+    },
+  };
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -90,13 +93,16 @@ const Skills = () => {
       y: 0,
       transition: {
         type: "spring",
-        stiffness: 100
-      }
-    }
-  }
+        stiffness: 100,
+      },
+    },
+  };
 
   return (
-    <section id="skills" className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900/20">
+    <section
+      id="skills"
+      className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900/20"
+    >
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -109,16 +115,25 @@ const Skills = () => {
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 200, damping: 10, delay: 0.2 }}
+            transition={{
+              type: "spring",
+              stiffness: 200,
+              damping: 10,
+              delay: 0.2,
+            }}
             className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 p-2.5 sm:p-3 shadow-lg"
           >
-            <Icon icon="carbon:skill-level" className="w-full h-full text-white" />
+            <Icon
+              icon="carbon:skill-level"
+              className="w-full h-full text-white"
+            />
           </motion.div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
             Technical Skills
           </h2>
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise and tools I work with
+            A comprehensive overview of my technical expertise and tools I work
+            with
           </p>
         </motion.div>
 
@@ -137,20 +152,27 @@ const Skills = () => {
               className="group relative"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
-              
+
               <div className="relative h-full p-4 sm:p-5 bg-white dark:bg-gray-800/90 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
                 {/* Background pattern */}
                 <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
-                  <div className="absolute inset-0" style={{
-                    backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-                  }} />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      backgroundImage:
+                        "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+                    }}
+                  />
                 </div>
 
                 <div className="relative">
                   {/* Category header */}
                   <div className="flex items-start gap-2 sm:gap-3 mb-4">
                     <div className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 p-1.5 sm:p-2 shadow-md group-hover:scale-110 transition-transform duration-300">
-                      <Icon icon={category.icon} className="w-full h-full text-white" />
+                      <Icon
+                        icon={category.icon}
+                        className="w-full h-full text-white"
+                      />
                     </div>
                     <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-tight">
                       {category.name}
@@ -169,11 +191,15 @@ const Skills = () => {
                       >
                         <div className="w-4 h-4 sm:w-5 sm:h-5 relative flex items-center justify-center flex-shrink-0">
                           {skill.icon ? (
-                            <Icon icon={skill.icon} className="w-full h-full" onError={(e) => {
-                              const target = e.target as HTMLElement;
-                              target.style.backgroundColor = 'currentColor';
-                              target.style.borderRadius = '50%';
-                            }} />
+                            <Icon
+                              icon={skill.icon}
+                              className="w-full h-full"
+                              onError={(e) => {
+                                const target = e.target as HTMLElement;
+                                target.style.backgroundColor = "currentColor";
+                                target.style.borderRadius = "50%";
+                              }}
+                            />
                           ) : (
                             <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-500 to-purple-500" />
                           )}
@@ -196,7 +222,7 @@ const Skills = () => {
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;
