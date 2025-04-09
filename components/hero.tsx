@@ -85,7 +85,7 @@ const Hero = () => {
               />
               <div className="relative z-10">
                 <Image
-                  src="/profile.jpeg"
+                  src="/profile.png"
                   alt="Nouval Nazmi Sani"
                   width={384}
                   height={384}
